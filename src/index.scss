@@ -1,0 +1,41 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Lato&display=swap');
+
+:root {
+    --primary-color: #ff6c2d;
+    --primary-color-tint: #de5967;
+    --primary-color-shade: #ff5a14;
+    --default-transition: all ease-in-out .3s;
+}
+
+#root {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 20rem;
+}
+
+// a11y
+
+.sr-only {
+    display: none;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: 'Lato', sans-serif;
+}
+
+a,p,span,article,section,strong,small,em,caption {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: var(--primary-color);
+    transition: var(--default-transition);
+    &:hover, &:focus {
+        color: var(--primary-color-tint);
+    }
+}
+
+.text-center {
+    text-align: center;
+}
