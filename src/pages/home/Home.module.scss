@@ -1,0 +1,61 @@
+#banner {
+    min-height: 100vh;
+    background: url('/images/flight-passenger.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    position: relative;
+
+    .bannerContent {
+        position: relative;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    h1, p {
+        color: #fff;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+    }
+}
+
+#cta {
+    background: url('/images/cta.jpg');
+    background-size: cover;
+    h1, p {
+        color: #fff;
+    }
+    img {
+        height: 90px;
+    }
+}
+
+
+#navButtons {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    #navNext, #navPrev {
+        position: absolute;
+    }
+    #navNext {
+        right: 0;
+    }
+}
+
+.section {
+    padding: 6rem 4rem;
+    header {
+        text-align: center;
+    }
+}
