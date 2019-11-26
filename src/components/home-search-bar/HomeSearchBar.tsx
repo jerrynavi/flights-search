@@ -1,5 +1,5 @@
 import React, { Component, FormEvent } from 'react';
-import { Row, Col, Input, Icon, Button, DatePicker, Form, message, AutoComplete } from 'antd';
+import { Row, Col, Input, Icon, Button, DatePicker, Form, message, AutoComplete, Select, Collapse } from 'antd';
 import { WrappedFormUtils, FormComponentProps } from 'antd/lib/form/Form';
 import moment from 'moment';
 import { TypeaheadService } from '../../services/typeahead';
@@ -12,6 +12,8 @@ import { AnyAction } from 'redux';
 import { SearchData } from '../../interfaces/SearchData';
 
 const { Item } = Form;
+const { Option } = Select;
+const { Panel } = Collapse;
 const typeahead = new TypeaheadService();
 
 const handleFormValueChanged = (props: FormComponentProps<any>): void => {
@@ -22,6 +24,10 @@ const handleFormValueChanged = (props: FormComponentProps<any>): void => {
         }
     }
 };
+
+const cabinOpts: string[] = [
+    'First', 'Economy', 'Business', 'All'
+];
 
 class HomeSearchBar extends Component<{form: WrappedFormUtils; history?: any; dispatch(action: AnyAction): void }> {
     state: {
@@ -93,10 +99,10 @@ class HomeSearchBar extends Component<{form: WrappedFormUtils; history?: any; di
                     }
                 ],
                 search_param: {
-                    no_of_adult: Number(values.no_of_adult),
-                    no_of_child: 0,
-                    no_of_infant: 0,
-                    cabin: 'All',
+                    no_of_adult: (values.no_of_adult) ? Number(values.no_of_adult) : 1,
+                    no_of_child: (values.no_of_child) ? Number(values.no_of_child) : 0,
+                    no_of_infant: (values.no_of_infant) ? Number(values.no_of_infant) : 0,
+                    cabin: values.cabin,
                     preferred_airline_code: '',
                     calendar: false
                 }
@@ -220,7 +226,7 @@ class HomeSearchBar extends Component<{form: WrappedFormUtils; history?: any; di
                         })(
                             <Input
                                 size="large"
-                                placeholder="Adults"
+                                placeholder="Adults (12 years and over)"
                                 type="number"
                                 style={{
                                     marginTop: '0.6rem'
@@ -235,6 +241,72 @@ class HomeSearchBar extends Component<{form: WrappedFormUtils; history?: any; di
                         </Button>
                     </Col>
                 </Row>
+
+                <Row>
+                    <Col span={24}>
+                        <Collapse
+                            bordered={false}
+                            style={{
+                                background: 'transparent'
+                            }}
+                        >
+                            <Panel header={<span style={{ color: '#fff' }}>More options</span>} key="1">
+
+                                <Row gutter={4}>
+                                    <Col lg={{ span: 8 }}>
+                                        {getFieldDecorator('no_of_child', {
+                                            rules: []
+                                        })(
+                                            <Input
+                                                size="large"
+                                                placeholder="Children (2-12 y/o)"
+                                                type="number"
+                                                style={{
+                                                    marginTop: '0.6rem'
+                                                }}
+                                            />
+                                        )}
+                                    </Col>
+                                    <Col lg={{ span: 8 }}>
+                                        {getFieldDecorator('no_of_infant', {
+                                            rules: []
+                                        })(
+                                            <Input
+                                                size="large"
+                                                placeholder="Infants (2 years and under)"
+                                                type="number"
+                                                style={{
+                                                    marginTop: '0.6rem'
+                                                }}
+                                            />
+                                        )}
+                                    </Col>
+                                    <Col lg={{ span: 8 }}>
+                                        {getFieldDecorator('cabin', {
+                                            rules: [
+                                                {
+                                                    required: true
+                                                }
+                                            ]
+                                        })(
+                                            <Select
+                                                placeholder="Select Cabin"
+                                                size="large"
+                                                style={{
+                                                    marginTop: '0.6rem'
+                                                }}>
+                                                {cabinOpts.map((opt, i) => (
+                                                    <Option key={i} value={opt}>{opt}</Option>
+                                                ))}
+                                            </Select>
+                                        )}
+                                    </Col>
+                                </Row>
+                            </Panel>
+                        </Collapse>
+                    </Col>
+                </Row>
+
     
             </Form>
         );
