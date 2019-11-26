@@ -11,6 +11,6 @@ export interface SearchData {
         no_of_infant: number;
         preferred_airline_code: string;
         calendar: boolean;
-        cabin: string;
+        cabin: 'First' | 'Business' | 'Economy' | 'All';
     };
 }
