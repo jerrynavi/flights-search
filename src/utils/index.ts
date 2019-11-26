@@ -1,7 +1,7 @@
 import * as reducerActions from './reducerActions';
 
-export const formatCurrency = (amount: number): string => {
-    return new Intl.NumberFormat('en-ng', {style: 'currency', currency: 'NGN' }).format(amount);
+export const formatCurrency = (amount: string): string => {
+    return new Intl.NumberFormat('en-ng', {style: 'currency', currency: 'NGN' }).format(Number(amount));
 };
 
 export const actions = reducerActions;
