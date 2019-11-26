@@ -8,6 +8,7 @@ import { Skeleton, Card, Row, Col, Typography, Icon, Button, message, Empty } fr
 import styles from './SearchResult.module.scss';
 import { Link } from 'react-router-dom';
 import FlightCard from '../../components/flight-card/FlightCard';
+import Helmet from 'react-helmet';
 
 const { Title } = Typography;
 
@@ -47,6 +48,9 @@ class SearchResult extends Component<{currentSearch?: any}> {
         const { loading, flights } = this.state;
         return (
             <div id="search-results">
+                <Helmet>
+                    <title>Search results - Travel Mate</title>
+                </Helmet>
                 <div className={styles.header}>
                     {(flights.length > 0 || !loading)
                         ?
