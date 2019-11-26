@@ -1,5 +1,5 @@
-import { User } from './User';
+import { SearchData } from './SearchData';
 
 export interface State {
-    user: User | null;
+    currentSearch: SearchData | null;
 }

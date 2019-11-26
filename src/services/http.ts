@@ -25,15 +25,14 @@ export class Http {
 
         this.httpClient.interceptors.response.use(async (response: AxiosResponse): Promise<any> => {
             if (response.status === 200) {
-                console.log(response);
-                return response.data.body;
+                return response.data;
             }
         }, (error) => {
             if (error.response) {
                 if (error.response.status === 401) {
                     window.location.href = '/auth';
                 }
-                return message.error(error.response.body.message);
+                return message.error((error.response.message) ? error.response.message : error.response.data.body.message);
             } else if (error.request) {
                 return message.error('No response from the server.');
             } else {

@@ -5,6 +5,7 @@ import faker from 'faker';
 import { Typography, Carousel, Card, Button, Row, Col } from 'antd';
 import HomeSearchBar from '../../components/home-search-bar/HomeSearchBar';
 import moment from 'moment';
+import { RouteComponentProps } from 'react-router';
 
 const { Title } = Typography;
 const { Meta } = Card;
@@ -47,7 +48,7 @@ const slideOpts = {
     ],
 };
 
-class Home extends Component {
+class Home extends Component<RouteComponentProps> {
 
     state: {
         popularCities?: City[];
@@ -87,7 +88,7 @@ class Home extends Component {
                                 <Title level={1}>Start Your Journey</Title>
                                 <p>Compare hundreds of travel websites at once</p>
                             </div>
-                            <HomeSearchBar />
+                            <HomeSearchBar history={this.props.history} />
 
                         </div>
                     </div>
