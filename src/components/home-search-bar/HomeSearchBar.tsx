@@ -26,7 +26,7 @@ const handleFormValueChanged = (props: FormComponentProps<any>): void => {
 };
 
 const cabinOpts: string[] = [
-    'First', 'Economy', 'Business', 'All'
+    'First', 'Economy', 'Business', 'Premium', 'All'
 ];
 
 class HomeSearchBar extends Component<{form: WrappedFormUtils; history?: any; dispatch(action: AnyAction): void }> {
