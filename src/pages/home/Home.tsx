@@ -108,7 +108,7 @@ class Home extends Component<RouteComponentProps> {
                                     {...slideOpts}
                                 >
                                     {popularCities?.map((city: City, i: number): JSX.Element => (
-                                        <div style={{ padding: '0 0.5rem' }}>
+                                        <div key={i} style={{ padding: '0 0.5rem' }}>
                                             <Card
                                                 key={i}
                                                 cover={<img src={city.imageUrl} alt="a city" />}
