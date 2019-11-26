@@ -14,12 +14,6 @@
     padding-bottom: 20rem;
 }
 
-// a11y ;)
-
-.sr-only {
-    display: none;
-}
-
 h1,h2,h3,h4,h5 {
     font-family: 'Lato', sans-serif;
     font-weight: 300 !important;
@@ -39,6 +33,16 @@ a {
 
 .text-center {
     text-align: center;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.card {
+    border-radius: 0.6rem !important;
+    box-shadow: 1px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem !important;
 }
 
 #footer {
