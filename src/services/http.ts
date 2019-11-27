@@ -5,7 +5,7 @@ import { STORE_NAME } from '../utils';
 
 export class Http {
     httpClient: AxiosInstance = axios.create({
-        baseURL: 'http://www.ije-api.tcore.xyz/v1/',
+        baseURL: 'https://www.ije-api.tcore.xyz/v1/',
         responseType: 'json',
     });
 
